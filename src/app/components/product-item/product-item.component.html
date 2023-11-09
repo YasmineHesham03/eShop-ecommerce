@@ -1,0 +1,65 @@
+<div class="product h-100">
+  <ul
+    class="product-action list-unstyled d-flex flex-column align-items-center justify-content-between"
+  >
+    <li
+      (click)="addProductToCart(product.id)"
+      mat-raised-button
+      matTooltip="Add To Cart"
+      [matTooltipPosition]="position.value!"
+      class="product-icon d-flex justify-content-center align-items-center"
+    >
+      <span *ngIf="product.isLoading"><i class="fas fa-spin fa-spinner"></i></span>
+      <i *ngIf="!product.isLoading" class="fa-solid fa-cart-shopping"></i>
+    </li>
+    <li
+      mat-raised-button
+      matTooltip="Quick View"
+      [matTooltipPosition]="position.value!"
+      class="product-icon d-flex justify-content-center align-items-center"
+    >
+      <i class="fa-solid fa-eye"></i>
+    </li>
+    <div>
+      <li *ngIf="!wishListProducts.includes(product.id)"
+        (click)="addProductToWishlist(product.id)"
+        mat-raised-button
+        matTooltip="Add To Wishlist"
+        [matTooltipPosition]="position.value!"
+        class="product-icon d-flex justify-content-center align-items-center"
+      >
+        <span *ngIf="product.isLoading"><i class="fas fa-spin fa-spinner"></i></span>
+        <i *ngIf="!product.isLoading" class="fa-solid fa-heart"></i>
+      </li>
+
+      <li
+      *ngIf="wishListProducts.includes(product.id)"
+      (click)="removeFromWishlist(product.id)"
+      mat-raised-button
+      matTooltip="Remove From Wishlist"
+      [matTooltipPosition]="position.value!"
+      class="remove-icon d-flex justify-content-center align-items-center"
+    >
+      <span *ngIf="product.isLoading"><i class="fas fa-spin fa-spinner"></i></span>
+      <i *ngIf="!product.isLoading" class="fa-solid fa-heart"></i>
+    </li>
+    </div>
+  </ul>
+
+  <div class="p-2 product-info" [routerLink]="['/productdetails', product.id]">
+    <img class="w-100" [src]="product.imageCover" [title]="product.title" [alt]="product.title" />
+    <p class="m-0 text-muted">{{ product.category.name }}</p>
+    <h6 class="text-main">{{ product.title | trimtext : 3 }}</h6>
+    <div class="d-flex justify-content-between align-items-center">
+      <span>{{ product.price | currency : "EGP" }}</span>
+      <span>
+        <i
+          [ngClass]="product.ratingsAverage >= star ? 'fa-solid' : 'fa-regular'"
+          *ngFor="let star of [1, 2, 3, 4, 5]"
+          class="fa-star rating-color"
+        ></i>
+        {{ product.ratingsAverage }}
+      </span>
+    </div>
+  </div>
+</div>

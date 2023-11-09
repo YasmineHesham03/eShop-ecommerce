@@ -1,0 +1,13 @@
+<section class="py-5">
+  <div class="title pb-5">
+    <h2 class="h1 fw-bolder font-dark">Brand Details</h2>
+  </div>
+  <div class="row g-5">
+    <div *ngFor="let product of brandProducts" class="cursor-pointer col-md-3">
+      <app-product-item
+        [product]="product"
+        [wishListProducts]="wishListProducts"
+      ></app-product-item>
+    </div>
+  </div>
+</section>

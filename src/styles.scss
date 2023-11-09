@@ -1,1 +1,288 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
+@import "ngx-toastr/toastr";
+
+$main-color: #00765c;
+$light-color: #f6f6f6;
+$light-text: #888888;
+$dark-text: #333333;
+$shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+  rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+  rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+$font-family: "Noto Sans", sans-serif;
+$rating-color: #fec42d;
+$main-transition: 0.8s;
+$danger-color: #f44336;
+
+body,
+html {
+  margin: 0;
+  font-family: $font-family;
+}
+
+.text-main {
+  color: $main-color;
+}
+
+.font-light {
+  color: $light-text;
+}
+
+.font-dark {
+  color: $dark-text;
+}
+
+.font-sm {
+  font-size: 1rem;
+}
+
+.font-bold {
+  font-weight: 900;
+}
+
+.bg-main-light {
+  background-color: $light-color;
+}
+
+.bg-main {
+  background-color: $main-color;
+}
+
+.rating-color {
+  color: $rating-color;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $light-color;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $main-color;
+}
+
+.common {
+  border-radius: 100vh;
+}
+
+.btn-common {
+  @extend .common;
+  color: white;
+  border: unset;
+  cursor: pointer;
+  padding: 8px 15px;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.main-btn {
+  @extend .common;
+  @extend .btn-common;
+  background-color: $main-color;
+
+  &:hover {
+    background-color: $dark-text;
+  }
+}
+
+.clear-btn {
+  @extend .btn-common;
+  background-color: $danger-color;
+  &:hover {
+    background-color: $dark-text;
+  }
+}
+
+.remove-btn {
+  transition: color 0.2s;
+  color: #5c5c5c;
+
+  &:hover {
+    i,
+    h6 {
+      color: $danger-color;
+    }
+  }
+}
+
+.plus-btn {
+  transition: color 0.2s;
+  color: $main-color;
+  &:hover {
+    color: $dark-text;
+  }
+}
+
+.minus-btn {
+  transition: color 0.2s;
+  color: $danger-color;
+  &:hover {
+    color: $dark-text;
+  }
+}
+
+.product {
+  position: relative;
+  border: 1px solid $main-color;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: $shadow;
+  cursor: pointer;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  .product-action {
+    width: 3rem;
+    height: 10rem;
+    padding: 0.5rem;
+    background-color: rgba(51, 51, 51, 0.3);
+    position: absolute;
+    left: 100%;
+    top: 35%;
+    opacity: 0;
+    border-radius: 0.3125rem;
+    transition: left 0.4s, opacity 0.4s;
+  }
+
+  &:hover {
+    .product-action {
+      left: 78%;
+      opacity: 1;
+    }
+  }
+
+  .product-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 100%;
+    background-color: #fff;
+    color: $main-color;
+    transition: background-color 0.4s, color 0.4s;
+
+    &:hover {
+      background-color: $main-color;
+      i {
+        color: white;
+      }
+    }
+  }
+
+  .remove-icon{
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 100%;
+    background-color: white;
+    color: $danger-color;
+    transition: background-color 0.4s, color 0.4s;
+
+    &:hover {
+      background-color: $main-color;
+      i {
+        color: white
+      }
+    }
+  }
+}
+
+.nav-link {
+  @extend .common;
+}
+
+.active-link {
+  color: white !important;
+  background-color: $main-color !important;
+  @extend .common;
+}
+
+.navbar .navbar-brand {
+  color: $main-color !important;
+}
+
+.nav-icons i {
+  transition: color 0.2s;
+  &:hover {
+    color: $dark-text;
+    cursor: pointer;
+  }
+}
+
+.error-img {
+  width: 40%;
+}
+
+.custom-input {
+  width: 50%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.title h2 {
+  display: inline;
+  position: relative;
+  &::after {
+    content: "";
+    width: 20%;
+    height: 0.15rem;
+    background-color: $main-color;
+    position: absolute;
+    bottom: -20%;
+    left: 0%;
+  }
+}
+
+.cat-image-container {
+  cursor: pointer;
+  box-shadow: $shadow;
+  width: 11rem;
+  height: 11rem;
+  overflow: hidden;
+  background-color: #00765c;
+  border-radius: 200%;
+  img {
+    object-fit: cover;
+    transition: transform 0.2s;
+  }
+
+  &:hover {
+    .cat-text-container {
+      opacity: 1;
+    }
+
+    img {
+      transform: scale(1.1);
+    }
+  }
+
+  .cat-text-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 11rem;
+    height: 11rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+}
+
+.form-control:focus {
+  color: $dark-text;
+  border-color: $main-color;
+  box-shadow: 0 0 0 0.25rem rgba(0, 118, 92, 0.25);
+}

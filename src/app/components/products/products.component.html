@@ -1,0 +1,52 @@
+<input
+  class="form-control w-100 mx-auto mt-5"
+  type="text"
+  placeholder="Search Products.."
+  [(ngModel)]="term"
+/>
+
+<section *ngIf="allProducts.length > 0" class="py-5">
+  <div class="title">
+    <h2 class="h1 fw-bolder font-dark">All Products</h2>
+  </div>
+  <div class="row g-5 mt-3">
+    <div
+      *ngFor="
+        let product of allProducts
+          | search : term
+          | paginate
+            : {
+                id: 'productPaginate',
+                itemsPerPage: pageSize,
+                currentPage: pageNumber,
+                totalItems: totalProducts
+              }
+      "
+      class="col-sm-6 col-md-3"
+    >
+      <app-product-item
+        [product]="product"
+        [wishListProducts]="wishListProducts"
+      ></app-product-item>
+    </div>
+  </div>
+</section>
+
+<div class="pagination d-flex justify-content-center my-2">
+  <pagination-controls
+    class="my-pagination"
+    id="productPaginate"
+    (pageChange)="pageChanged($event)"
+    (pageBoundsCorrection)="pageChanged($event)"
+    [maxSize]="9"
+    [directionLinks]="true"
+    [autoHide]="true"
+    [responsive]="true"
+    previousLabel="Previous"
+    nextLabel="Next"
+    screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"
+    screenReaderCurrentLabel="You're on page"
+  >
+  </pagination-controls>
+</div>

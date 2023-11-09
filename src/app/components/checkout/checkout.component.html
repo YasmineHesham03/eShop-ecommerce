@@ -1,0 +1,54 @@
+<section class="my-4 py-4 text-center rounded-5 w-75 mx-auto shadow bg-main-light">
+  <h3 class="h1 pt-5 pb-4 fw-bolder text-main">Checkout:</h3>
+
+  <form [formGroup]="shippingForm" (ngSubmit)="handleForm()">
+    <div class="form-item mb-3">
+      <mat-form-field appearance="outline" class="w-75">
+        <mat-label>Shipping Address</mat-label>
+        <input
+          matInput
+          placeholder="Enter Your Shipping Details"
+          type="text"
+          formControlName="details"
+        />
+        <mat-error *ngIf="shippingForm.get('details')?.getError('required')"
+          >Shipping Address is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="form-item mb-3">
+      <mat-form-field appearance="outline" class="w-75">
+        <mat-label>Phone</mat-label>
+        <input matInput placeholder="Enter Your Phone" type="tel" formControlName="phone" />
+        <mat-error *ngIf="shippingForm.get('phone')?.getError('required')"
+          >Phone is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="form-item mb-3">
+      <mat-form-field appearance="outline" class="w-75">
+        <mat-label>City</mat-label>
+        <input matInput placeholder="Enter Your City" type="text" formControlName="city" />
+        <mat-error *ngIf="shippingForm.get('city')?.getError('required')"
+          >City is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="d-flex">
+      <button
+        (click)="handleCashDelivery()"
+        type="submit"
+        class="main-btn d-block mx-auto fs-6 w-25"
+      >
+        Cash On Delivery
+      </button>
+
+      <button class="main-btn d-block mx-auto fs-6 w-25">
+        Visa Payment <i class="fa-brands fa-cc-visa"></i>
+      </button>
+    </div>
+  </form>
+
+  <!-- <mat-error class="mt-2">{{ errMsg }}</mat-error> -->
+</section>

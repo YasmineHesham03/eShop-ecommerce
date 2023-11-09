@@ -1,0 +1,17 @@
+<section class="py-5">
+  <div class="title pb-5">
+    <h2 class="h1 fw-bolder font-dark">All Categories</h2>
+  </div>
+  <div class="row g-5">
+    <div *ngFor="let category of allCategories" class="col-md-3">
+      <div [routerLink]="['/categorydetails', category._id]" class="card cursor-pointer shadow-sm">
+        <div class="card-img">
+          <img class="w-100" [src]="category.image" alt="" />
+        </div>
+        <div class="card-body text-center text-container">
+          <h5>{{ category.name }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

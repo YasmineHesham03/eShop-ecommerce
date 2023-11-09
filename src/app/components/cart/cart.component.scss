@@ -1,0 +1,16 @@
+.cart-image {
+  width: 8rem;
+}
+
+@media (max-width: 768px) {
+  table {
+    font-size: 10px;
+  }
+  th,
+  td {
+    padding: 4px;
+  }
+  h6,i {
+    font-size: 10px !important; /* Adjust the font size as needed */
+  }
+}

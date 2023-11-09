@@ -1,0 +1,56 @@
+<section class="py-5" *ngIf="wishListDetails; else msg">
+  <div class="title">
+    <h2 class="h1 fw-bolder font-dark">Wishlist</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 my-5">
+      <div class="table-responsive">
+        <table class="table table-light table-striped table-hover text-center">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Product</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="align-middle" *ngFor="let item of wishListDetails; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td class="wishlist-image">
+                <img class="w-50" [src]="item.imageCover" alt="" />
+              </td>
+              <td>
+                <h6>{{ item.title }}</h6>
+              </td>
+              <td>
+                <h6>{{ item.price | currency : "EGP" }}</h6>
+              </td>
+              <td>
+                <div (click)="removeFromWishlist(item.id)" class="cursor-pointer remove-btn">
+                  <h6 class="remove-text"><i class="fa-solid fa-xmark"></i>Remove</h6>
+                </div>
+              </td>
+              <td>
+                <button (click)="addProductToCart(item.id)" class="main-btn">
+                  Add To Cart <i *ngIf="!item.isLoading" class="fa-solid fa-cart-shopping"></i>
+                  <span *ngIf="item.isLoading"><i class="fas fa-spin fa-spinner"></i></span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #msg>
+  <h2 class="text-center mt-5 fw-bolder text-muted">Oops! Your Cart Is Empty..</h2>
+  <div class="d-flex align-items-center flex-column justify-content-center">
+    <img class="w-50" src="./assets/images/broken-heart.svg" alt="" />
+  </div>
+</ng-template>

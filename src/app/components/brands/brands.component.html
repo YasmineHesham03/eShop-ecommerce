@@ -1,0 +1,17 @@
+<section class="py-5">
+  <div class="title pb-5">
+    <h2 class="h1 fw-bolder font-dark">All Brands</h2>
+  </div>
+  <div class="row g-5">
+    <div *ngFor="let brand of allBrands" class="col-md-3">
+      <div [routerLink]="['/branddetails', brand._id]" class="card cursor-pointer shadow-sm">
+        <div class="card-img">
+          <img class="w-100" [src]="brand.image" alt="" />
+        </div>
+        <div class="card-body text-center text-container">
+          <h5>{{ brand.name }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

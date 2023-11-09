@@ -1,0 +1,51 @@
+<nav #navBar class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand cursor-pointer font-bold fs-3" routerLink="">eShop.</a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active-link" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active-link" routerLink="/products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active-link" routerLink="/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active-link" routerLink="/brands">Brands</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav nav-icons ms-auto mt-2 mt-lg-0 font-light">
+        <li class="nav-item d-flex gap-3 align-items-center">
+          <i class="fa-solid fa-circle-user fs-4"></i>
+          <i
+            matBadge="{{ wishlistItems }}"
+            matBadgeColor="warn"
+            class="fa-solid fa-heart fs-4"
+            routerLink="/wishlist"
+          ></i>
+          <i
+            matBadge="{{ cartItems }}"
+            matBadgeColor="warn"
+            class="fa-solid fa-cart-shopping fs-4"
+            routerLink="/cart"
+          ></i>
+          <button (click)="signOut()" class="main-btn">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

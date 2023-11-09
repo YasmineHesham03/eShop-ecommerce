@@ -1,0 +1,24 @@
+
+
+:host {
+  padding-top: 5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-up {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 99;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  transition: color 0.1s;
+  color: #303030;
+
+  &:hover {
+    color: #888888;
+  }
+}

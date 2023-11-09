@@ -1,0 +1,89 @@
+<section class="py-5" *ngIf="cartDetails.data && cartDetails.data.products.length > 0; else msg">
+  <div class="title">
+    <h2 class="h1 fw-bolder font-dark">Shopping Cart</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 my-5">
+      <div class="table-responsive">
+        <table class="table table-light table-striped table-hover text-center">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Product</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="align-middle"
+              *ngFor="let item of cartDetails?.data?.products; let i = index"
+            >
+              <td>{{ i + 1 }}</td>
+              <td class="cart-image">
+                <img class="w-50" [src]="item.product.imageCover" alt="" />
+              </td>
+              <td>
+                <h6>{{ item.product.title }}</h6>
+              </td>
+              <td>
+                <h6>{{ item.price | currency : "EGP" }}</h6>
+              </td>
+              <td>
+                <div class="d-flex align-items-center justify-content-center gap-1">
+                  <span *ngIf="item.isAddLoading"><i class="fas fa-spin fa-spinner"></i></span>
+                  <i
+                    *ngIf="!item.isAddLoading"
+                    (click)="increaseCount(item.product.id, item.count + 1)"
+                    class="fa-solid fa-circle-plus fs-5 cursor-pointer plus-btn"
+                  ></i>
+                  <h6 class="m-0">{{ item.count }}</h6>
+                  <span *ngIf="item.isMinusLoading"><i class="fas fa-spin fa-spinner"></i></span>
+                  <i
+                    *ngIf="!item.isMinusLoading"
+                    (click)="decreaseCount(item.product.id, item.count - 1)"
+                    class="fa-solid fa-circle-minus fs-5 cursor-pointer minus-btn"
+                  ></i>
+                </div>
+              </td>
+              <td>
+                <div (click)="removeItem(item.product.id)" class="cursor-pointer remove-btn">
+                  <h6 class="remove-text"><i class="fa-solid fa-xmark"></i>Remove</h6>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-end mb-3">
+            <h5 class="d-inline rounded-3 p-2">
+              Total: {{ cartDetails.data.totalCartPrice | currency : "EGP" }}
+            </h5>
+          </div>
+          <div class="d-flex align-items-center justify-content-center">
+            <button (click)="clearCart()" class="d-block clear-btn">Clear Cart</button>
+
+            <button
+              [routerLink]="['/checkout', cartDetails.data._id]"
+              class="main-btn d-block ms-auto"
+            >
+              Proceed To Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #msg>
+  <h2 class="text-center mt-5 fw-bolder text-muted">Oops! Your Cart Is Empty..</h2>
+  <div class="d-flex align-items-center flex-column justify-content-center">
+    <img class="w-50" src="./assets/images/empty-cart.png" alt="" />
+  </div>
+</ng-template>
