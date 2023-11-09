@@ -9,8 +9,6 @@ import { Category } from 'src/app/core/interface/category';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { RouterLink } from '@angular/router';
-import { CartService } from 'src/app/core/services/cart.service';
-import { ToastrService } from 'ngx-toastr';
 import { SearchPipe } from 'src/app/core/pipes/search.pipe';
 import { ProductItemComponent } from '../product-item/product-item.component';
 import { WishlistService } from 'src/app/core/services/wishlist.service';

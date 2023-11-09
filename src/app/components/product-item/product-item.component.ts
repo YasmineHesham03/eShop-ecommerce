@@ -19,12 +19,11 @@ import { BehaviorSubject } from 'rxjs';
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.scss'],
 })
-export class ProductItemComponent implements OnInit {
+export class ProductItemComponent {
   positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
   position = new FormControl(this.positionOptions[4]);
 
   wishListDetails: Wishlist = {} as Wishlist;
-  // wishListData: string[] = [];
 
   @Input() product: Product = {} as Product;
   @Input() wishListProducts: string[] = [];
@@ -37,22 +36,10 @@ export class ProductItemComponent implements OnInit {
     private _wishlistService: WishlistService
   ) {}
 
-  ngOnInit(): void {
-    // this._WishlistService.getLoggedUserWishlist().subscribe({
-    //   next: (res) => {
-    //     // console.log(res.data);
-    //     const newWishlistData = res.data.map((item: any) => item.id);
-    //     // console.log('new Data', newWishlistData);
-    //     this.wishListData = newWishlistData;
-    //   },
-    // });
-  }
-
   addProductToCart(id: string) {
     this.product.isLoading = true;
     this._cartService.addToCart(id).subscribe({
       next: (res) => {
-        // console.log(res);
         this._toastrService.success(res.message);
         this.product.isLoading = false;
         this._cartService.cartNumber.next(res.numOfCartItems);
@@ -66,7 +53,6 @@ export class ProductItemComponent implements OnInit {
   addProductToWishlist(id: string) {
     this._wishlistService.addToWishlist(id).subscribe({
       next: (res) => {
-        // console.log(res);
         this._toastrService.success(res.message);
         this.product.isLoading = false;
         this.isWishButtonActive.next(!this.isWishButtonActive.value);
@@ -84,7 +70,6 @@ export class ProductItemComponent implements OnInit {
   removeFromWishlist(id: string) {
     this._wishlistService.removeWishlistItem(id).subscribe({
       next: (res) => {
-        // console.log(res);
         this._toastrService.error(res.message);
         this.isWishButtonActive.next(!this.isWishButtonActive.value);
         this._wishlistService.wishListNumber.next(res.data.length);

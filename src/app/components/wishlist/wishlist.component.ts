@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WishlistService } from 'src/app/core/services/wishlist.service';
-import { Wishlist } from 'src/app/core/interface/wishlist';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/core/services/cart.service';
 import { Product } from 'src/app/core/interface/product';
