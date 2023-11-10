@@ -35,7 +35,7 @@ export class CartService {
 
   checkOut(cartId: string | null, shippingInfo: object): Observable<any> {
     return this._httpClient.post(
-      `${this.apiBaseUrl}/api/v1/orders/checkout-session/${cartId}?url=http://localhost:4200`,
+      `${this.apiBaseUrl}/api/v1/orders/checkout-session/${cartId}?url=https://e-shop-ecommerce-weld.vercel.app`,
       {
         shippingAddress: shippingInfo,
       }

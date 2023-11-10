@@ -1,16 +1,19 @@
-import { Component,Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
-import { ProductDetailsComponent } from '../product-details/product-details.component';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-body',
   standalone: true,
-  imports: [CommonModule, MatDialogModule,ProductDetailsComponent],
+  imports: [CommonModule],
   templateUrl: './dialog-body.component.html',
   styleUrls: ['./dialog-body.component.scss'],
 })
 export class DialogBodyComponent {
-  constructor() {}
-
+  constructor(
+    public dialogRef: MatDialogRef<DialogBodyComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    console.log(this.data);
+  }
 }

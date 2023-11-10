@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/core/services/products.service';
@@ -32,15 +32,12 @@ export class ProductDetailsComponent implements OnInit {
         this.productId = params.get('id');
       },
     });
-
-    this.displayProductDetails();
   }
 
   displayProductDetails() {
     this._productsService.getProductDetailsById(this.productId).subscribe({
       next: (res) => {
         this.productDetails = res.data;
-
         this.displayedImage = this.productDetails.images[0];
       },
     });

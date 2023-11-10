@@ -11,11 +11,23 @@ import { ToastrService } from 'ngx-toastr';
 import { WishlistService } from 'src/app/core/services/wishlist.service';
 import { Wishlist } from 'src/app/core/interface/wishlist';
 import { BehaviorSubject } from 'rxjs';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
 
 @Component({
   selector: 'app-product-item',
   standalone: true,
-  imports: [CommonModule, TrimtextPipe, MatTooltipModule, RouterLink, SearchPipe, FormsModule],
+  imports: [
+    CommonModule,
+    TrimtextPipe,
+    MatTooltipModule,
+    RouterLink,
+    SearchPipe,
+    FormsModule,
+    MatDialogModule,
+  ],
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.scss'],
 })
@@ -33,7 +45,8 @@ export class ProductItemComponent {
   constructor(
     private _cartService: CartService,
     private _toastrService: ToastrService,
-    private _wishlistService: WishlistService
+    private _wishlistService: WishlistService,
+    public dialog: MatDialog
   ) {}
 
   addProductToCart(id: string) {
